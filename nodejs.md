@@ -220,3 +220,78 @@ createServer((req, res) => {
 console.log('Server is created!!');
 ```
 
+## Delete A Physical File
+
+### Asynchronous Way 
+```js
+import {createServer} from 'http';
+import fs from 'fs';
+
+createServer((req, res) => {
+    if(req.url == "/") {
+        fs.unlink('demoAsync.txt', error => {
+            if(!error) {
+                res.writeHead(200, {"Content-Type": "text/html"});
+                res.write("<h1>File Delete Success.</h1>");
+                res.end();
+            } else {
+                res.writeHead(200, {"Content-Type": "text/html"});
+                res.write("<h1>File Delete Fail.</h1>");
+                console.log(error.message);
+                res.end();
+            }
+        });
+    }
+}).listen(8080);
+console.log('Server is created!!');
+```
+### Synchronous Way 
+```js
+import {createServer} from 'http';
+import fs from 'fs';
+
+createServer((req, res) => {
+    if(req.url == "/") {
+        try {
+            fs.unlinkSync('demoSyncNew.txt');
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.write("<h1>File Delete Success.</h1>");
+            res.end();
+        } catch(error) {
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.write("<h1>File Delete Fail.</h1>");
+            console.log(error.message);
+            res.end();
+        }
+    }
+}).listen(8080);
+console.log('Server is created!!');
+```
+
+## Exists A Physical File
+
+### Asynchronous Way
+```js
+Asynchronous Way Is Obsolete Now
+```
+### Synchronous Way
+```js
+import {createServer} from 'http';
+import fs from 'fs';
+
+createServer((req, res) => {
+    if(req.url == "/") {
+        const result = fs.existsSync('home.html');
+        if(result) {
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.write("<h1>True</h1>");
+            res.end();
+        } else {
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.write("<h1>False</h1>");
+            res.end();
+        }
+    }
+}).listen(8080);
+console.log('Server is created!!');
+```

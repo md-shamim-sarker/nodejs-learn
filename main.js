@@ -3,15 +3,14 @@ import fs from 'fs';
 
 createServer((req, res) => {
     if(req.url == "/") {
-        try {
-            fs.renameSync('demoSync.txt', 'demoSyncNew.txt');
+        const result = fs.existsSync('home.html');
+        if(result) {
             res.writeHead(200, {"Content-Type": "text/html"});
-            res.write('<h1>File Rename Success.</h1>');
+            res.write("<h1>True</h1>");
             res.end();
-        } catch(error) {
+        } else {
             res.writeHead(200, {"Content-Type": "text/html"});
-            res.write('<h1>File Rename Fail.</h1>');
-            console.log(error.message);
+            res.write("<h1>False</h1>");
             res.end();
         }
     }
