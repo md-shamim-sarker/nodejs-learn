@@ -13,6 +13,10 @@ createServer((req, res) => {
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write('<h1>This is Contact Page</h1>');
         res.end();
+    } else {
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write('<h1>Error Code: 404; Not Found!!</h1>');
+        res.end();
     }
 }).listen(5050);
 console.log('Server is created!!');

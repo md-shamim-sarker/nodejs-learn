@@ -1,12 +1,19 @@
 import {createServer} from 'http';
-import URL from 'url';
+import fs from 'fs';
 
 createServer((req, res) => {
-    const myUrl = 'http://shamim.com/blog.html?year=2022&month=september';
-    const myUrlObj = URL.parse(myUrl, true);
-    const myStr = JSON.stringify(myUrlObj);
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(myStr);
-    res.end();
-}).listen(5050);
+    if(req.url == "/") {
+        try {
+            fs.renameSync('demoSync.txt', 'demoSyncNew.txt');
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.write('<h1>File Rename Success.</h1>');
+            res.end();
+        } catch(error) {
+            res.writeHead(200, {"Content-Type": "text/html"});
+            res.write('<h1>File Rename Fail.</h1>');
+            console.log(error.message);
+            res.end();
+        }
+    }
+}).listen(8080);
 console.log('Server is created!!');
