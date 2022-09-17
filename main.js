@@ -2,7 +2,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url == "/") {
+    if(req.url === "/") {
         const result = fs.existsSync('home.html');
         if(result) {
             res.writeHead(200, {"Content-Type": "text/html"});

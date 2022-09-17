@@ -83,7 +83,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url = "/") {
+    if(req.url === "/") {
         fs.readFile("home.html", (error, data) => {
             if(!error) {
                 res.writeHead(200, {'Content-Type': 'text/html'});
@@ -106,7 +106,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url = "/") {
+    if(req.url === "/") {
         try {
             const data = fs.readFileSync("homes.html");
             res.writeHead(200, {'Content-Type': 'text/html'});
@@ -130,7 +130,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url = "/") {
+    if(req.url === "/") {
         fs.writeFile('demoAsync.txt', 'Welcome to async writeFile.', error => {
             if(!error) {
                 res.writeHead(200, {"Content-Type": "text/html"});
@@ -154,7 +154,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url = "/") {
+    if(req.url === "/") {
         try {
             fs.writeFileSync('demoSync.txt', 'Welcome to File Sync');
             res.writeHead(200, {'Content-Type': 'text/html'});
@@ -179,7 +179,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url == "/") {
+    if(req.url === "/") {
         fs.rename('demoSync.txt', 'demoSyncNew.txt', error => {
             if(!error) {
                 res.writeHead(200, {"Content-Type": "text/html"});
@@ -203,7 +203,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url == "/") {
+    if(req.url === "/") {
         try {
             fs.renameSync('demoSync.txt', 'demoSyncNew.txt');
             res.writeHead(200, {"Content-Type": "text/html"});
@@ -228,7 +228,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url == "/") {
+    if(req.url === "/") {
         fs.unlink('demoAsync.txt', error => {
             if(!error) {
                 res.writeHead(200, {"Content-Type": "text/html"});
@@ -251,7 +251,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url == "/") {
+    if(req.url === "/") {
         try {
             fs.unlinkSync('demoSyncNew.txt');
             res.writeHead(200, {"Content-Type": "text/html"});
@@ -280,7 +280,7 @@ import {createServer} from 'http';
 import fs from 'fs';
 
 createServer((req, res) => {
-    if(req.url == "/") {
+    if(req.url === "/") {
         const result = fs.existsSync('home.html');
         if(result) {
             res.writeHead(200, {"Content-Type": "text/html"});
@@ -295,3 +295,4 @@ createServer((req, res) => {
 }).listen(8080);
 console.log('Server is created!!');
 ```
+---
